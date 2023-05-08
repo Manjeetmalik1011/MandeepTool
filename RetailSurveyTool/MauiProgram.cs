@@ -12,15 +12,20 @@ public static class MauiProgram
 			.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-				fonts.AddFont("fa-brands-400.ttf", "fa_brands");
-				fonts.AddFont("fa-regular-400.ttf", "FAS");
-				fonts.AddFont("fa-solid-900.ttf", "fa_solid");
-			});
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("fa-brands-400.ttf", "FAB");
+                fonts.AddFont("fa-regular-400.ttf", "FAR");
+                fonts.AddFont("fa-solid-900.ttf", "FAS");
+            });
+
+        AppDomain.CurrentDomain.UnhandledException += (sender, error) =>
+        {
+            //MessageBox.Show(text: error.ExceptionObject.ToString(), caption: "Error");
+        };
 
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
 		return builder.Build();

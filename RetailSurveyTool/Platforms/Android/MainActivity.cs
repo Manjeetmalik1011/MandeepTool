@@ -14,13 +14,6 @@ public class MainActivity : MauiAppCompatActivity
     {
         base.OnCreate(savedInstanceState);
         Jci.RetailSurveyTool.TechnicianApp.App.ParentWindow = this;
-        Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-    }
-    public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
-    {
-        Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
     }
     protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
     {

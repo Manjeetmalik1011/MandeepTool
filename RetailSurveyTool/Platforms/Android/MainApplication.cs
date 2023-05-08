@@ -6,16 +6,10 @@ namespace RetailSurveyTool;
 [Application]
 public class MainApplication : MauiApplication
 {
-	public MainApplication(IntPtr handle, JniHandleOwnership ownership)
-		: base(handle, ownership)
-	{
-        Jci.RetailSurveyTool.TechnicianApp.App.ParentWindow = this;
+    public MainApplication(IntPtr handle, JniHandleOwnership ownership)
+        : base(handle, ownership)
+    {
     }
 
-	//protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
-	protected override MauiApp CreateMauiApp()
-	{
-        //Jci.RetailSurveyTool.TechnicianApp.App.ParentWindow = this;
-        return MauiProgram.CreateMauiApp();
-    }
+    protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 }
