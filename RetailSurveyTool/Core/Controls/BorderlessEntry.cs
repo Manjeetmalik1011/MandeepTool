@@ -6,6 +6,7 @@ namespace Jci.RetailSurveyTool.TechnicianApp.Controls
     {
         public BorderlessEntry()
         {
+            HeightRequest = 50;
         }
     }
 
