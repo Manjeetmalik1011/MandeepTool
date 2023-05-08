@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Jci.RetailSurveyTool.TechnicianApp.Views.ExistingAudit.IssueListPage"
+    xmlns:db="clr-namespace:JCI.RetailSurveyTool.DataBase.Models;assembly=JCI.RetailSurveyTool.DataBase"
+    Title="Issues"
+    IconImageSource="icon_feed.png"
+    BindingContext="{StaticResource AuditViewModel}">
+    <ContentPage.Content>
+        <ListView ItemsSource="{Binding Issues}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding IssueType.Name}"/>
+                            <Label Text="{Binding IssueCategory.Name}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

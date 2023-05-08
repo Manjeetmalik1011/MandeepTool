@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- xmlns:viewModels="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.ViewModels.NewAudit" 
+IsBusy="{Binding IsBusy}"    
+    -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fontAwesome="clr-namespace:FontAwesome"
+             xmlns:behaviors="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Behaviors"
+             x:Class="Jci.RetailSurveyTool.TechnicianApp.Views.NewAudit.NewAuditPage" 
+             xmlns:utility="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Utility"
+             xmlns:local="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Controls"
+             xmlns:picker="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Controls"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             Title="New Audit"
+              Style="{StaticResource BaseContentPage}"
+             >
+    <ContentPage.Content>
+
+        <StackLayout Padding="10">
+
+            <Label Style="{StaticResource LabelMedium}" Margin="0,10,0,0" Text="WO#"/>
+            <Frame Style="{StaticResource InputFieldStyle}">
+                <Grid VerticalOptions="FillAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectCustomerCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" ></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" ></ColumnDefinition>
+                        <ColumnDefinition Width="65" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <local:BorderlessEntry FlexLayout.Grow="1" Keyboard="Text"
+                                           Placeholder="Ex: WO-123VOM"
+                                           Text="{Binding SelectedAudit.ServiceCallNumber}" Style="{StaticResource EntryStyle}"
+                                       Grid.Column="0"
+                                       FontSize="Small" />
+                    <ImageButton Style="{StaticResource ImageButtonOutline}"
+                                 Grid.Column="1"
+                                 VerticalOptions="FillAndExpand" Command="{Binding ServiceCallLookUpCommand}">
+                        
+                        
+                        
+                        <ImageButton.Source>
+                            <FontImageSource 
+                                            
+                                            FontFamily="FAS"
+                                            Glyph="{x:Static fontAwesome:FontAwesomeIcons.Search}"
+                                            Size="Micro"
+                                           
+                                            Color="{AppThemeBinding Dark={StaticResource Primary},Light={StaticResource TextColorDark}}"
+                                            />
+                        </ImageButton.Source>
+                    </ImageButton>
+                </Grid>
+            </Frame>
+
+            <Label FontFamily="OpenSans" Style="{StaticResource LabelMedium}" Margin="0,10,0,0" Text="Customer"/>
+            <Frame Style="{StaticResource InputFieldStyle}">
+
+                <Grid VerticalOptions="FillAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SelectCustomerCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" ></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" ></ColumnDefinition>
+                        <ColumnDefinition Width="65" ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Margin="5,0,0,0" Grid.Column="0"
+                       FontSize="Small" VerticalTextAlignment="Center" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                         
+                       Text="{Binding SelectedCustomer.Name, FallbackValue='No Customer Selected...'}"
+                       Style="{StaticResource EntryStyle}"
+                    />
+                    <ImageButton 
+                        Grid.Column="1"
+                        Style="{StaticResource ImageButtonOutline}" 
+                                 HorizontalOptions="EndAndExpand" HeightRequest="40" Command="{Binding SelectCustomerCommand}">
+                        <ImageButton.Source>
+                            <FontImageSource 
+                                            FontFamily="FAS"
+                                            Glyph="{x:Static fontAwesome:FontAwesomeIcons.ArrowAltCircleDown}"
+                                            Size="Small"
+                                            Color="{AppThemeBinding Dark={StaticResource Primary},Light={StaticResource TextColorDark}}"
+                                            />
+                        </ImageButton.Source>
+                    </ImageButton>
+                </Grid>
+               
+            </Frame>
+
+            <!--                    IsEnabled="{Binding CustomerIsSelected}"
+             SelectedItem="{Binding SelectedStoreType}"
+            
+            SelectedIndexChanged="{Binding Source={x:Reference NewAuditViewModel}, Path=BindingContext.OnPickerSelectedIndexChanged}"
+            SelectedIndexChanged="{Binding Source={x:Reference NewAuditViewModel}, Path=BindingContext.OnPickerSelectedIndexChanged}"
+                                SelectedIndexChanged="{Binding SelectedStoreType}" 
+            -->
+            <Label  Style="{StaticResource LabelMedium}" Margin="0,10,0,0" Text="Store Type"/>
+            <Frame Style="{StaticResource InputFieldStyle}">
+                <picker:BorderlessPicker 
+                    ItemDisplayBinding="{Binding Name}" 
+                    ItemsSource="{Binding StoreTypes}"                                        
+                    
+                    SelectedItem="{Binding SelectedStoreType}" 
+                   Style="{StaticResource EntryStyle}"
+                    
+                    FontSize="Small" Image="picker_down_arrow.png">
+                    <Picker.Behaviors>
+                        <behaviors:EventToCommandBehavior 
+                            EventName="SelectedIndexChanged" 
+                            Command="{Binding PickerSelectedIndexChangedCommand}" 
+                            EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                        </behaviors:EventToCommandBehavior>
+                    </Picker.Behaviors>
+                </picker:BorderlessPicker>
+            </Frame>
+
+            <Label Style="{StaticResource LabelMedium}" Margin="0,10,0,0" Text="Store #"/>
+            <Frame Style="{StaticResource InputFieldStyle}">
+                <FlexLayout>
+                    <local:BorderlessEntry FlexLayout.Grow="1" Style="{StaticResource EntryStyle}"
+                            
+                           Keyboard="Text" Placeholder="Ex: #7775" Text="{Binding SelectedAudit.StoreNumber}"
+                           FontSize="Small"
+                           />
+                </FlexLayout>
+            </Frame>
+            <Label Style="{StaticResource LabelMedium}" Margin="0,10,0,0" Text="Store Contact"/>
+            <Frame Style="{StaticResource InputFieldStyle}">
+                <FlexLayout>
+                    <local:BorderlessEntry FlexLayout.Grow="1" Style="{StaticResource EntryStyle}"
+                           Keyboard="Text" Placeholder="Ex: John Smith" 
+                           FontSize="Small"                            
+                           Text="{Binding SelectedAudit.StoreContact}" />
+                </FlexLayout>
+            </Frame>
+            <Button Style="{StaticResource CustomButtonStyle}" 
+                    HorizontalOptions="Fill"
+                    Margin="0,20,0,0"
+                    BackgroundColor="{StaticResource Primary}" Text="Start Audit" Command="{Binding StartAuditCommand}"/>
+
+            <AbsoluteLayout>
+                <Button Text="Submit"
+              
+              AbsoluteLayout.LayoutFlags="PositionProportional"
+              AbsoluteLayout.LayoutBounds="0,1,1,AutoSize"/>
+            </AbsoluteLayout>
+
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<TabbedPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontAwesome="clr-namespace:FontAwesome"  
+    xmlns:l="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Views.NewAudit"
+    x:Class="Jci.RetailSurveyTool.TechnicianApp.Views.NewAudit.StoreAreaDetailsPage"
+    xmlns:ctl="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Controls"
+    xmlns:c="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Converters"
+    xmlns:behaviors="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Behaviors"
+    xmlns:utility="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Utility"
+    utility:ViewModelLocator.AutoWireViewModel="True"
+    Title="{Binding StoreAreaDetailTitle}"
+    Style="{StaticResource BaseContentPageBug}">
+    <TabbedPage.ToolbarItems>
+        <!--<ToolbarItem Text="Add" IconImageSource="icon_add_toolbar.png" Command="{Binding AddItemCommand}"/>
+         <ToolbarItem Text="Add" Command="{Binding AddItemCommand}">
+        -->
+        <ToolbarItem Text="Add" Command="{Binding AddItemCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource 
+                    FontFamily="FAS"
+                    Glyph="{x:Static fontAwesome:FontAwesomeIcons.PlusCircle}"
+                    Size="Large"
+                    />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </TabbedPage.ToolbarItems>
+    <l:InventoryListPage/>
+    <l:IssueListPage/>
+    
+</TabbedPage>
+<!--
+
+    
+    C:\jci\JCI\RetailSurveyTool\Jci.RetailSurveyTool.TechnicianApp\Jci.RetailSurveyTool.TechnicianApp.Android\Resources\drawable
+    -->

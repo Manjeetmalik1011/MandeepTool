@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontAwesome="clr-namespace:FontAwesome"
+    x:Class="Jci.RetailSurveyTool.TechnicianApp.Views.NewAudit.InventoryListPage"
+    xmlns:db="clr-namespace:JCI.RetailSurveyTool.DataBase.Models;assembly=JCI.RetailSurveyTool.DataBase"
+    xmlns:c="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Converters"
+    xmlns:behaviors="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Behaviors"
+    xmlns:utility="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Utility"
+    utility:ViewModelLocator.AutoWireViewModel="True"  
+    Title="Inventory"
+    x:Name="InventoryCurrentPageId"
+    IconImageSource="icon_feed.png"
+    Style="{StaticResource BaseContentPageBug}"
+    >
+
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="Add" Command="{Binding AddInventory}"/>
+       
+        Command="{Binding AddInventory}"
+        -->
+        <ToolbarItem Text="Add" >
+            <ToolbarItem.IconImageSource>
+                <FontImageSource 
+                    FontFamily="FAS"
+                    Glyph="{x:Static fontAwesome:FontAwesomeIcons.PlusCircle}"
+                    Size="Large"
+                    />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+
+    <ContentPage.Content>
+        <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='0', iOS='0,100,0,0'}" >
+
+            <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                     RefreshColor="Red"
+                     Command="{Binding LoadCommand}">
+
+                <CollectionView x:Name="MenuItemsListView" 
+                      Style="{StaticResource AppListView}" SelectionMode="None"
+                      ItemsSource="{Binding Inventories,Mode=TwoWay}">
+                    
+                    <CollectionView.Header>
+                        <Grid 
+                            BackgroundColor="{AppThemeBinding Dark={StaticResource WindowBackgroundColorDark}, Light={StaticResource WindowBackgroundColor}}">
+                           
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition>
+                                    <RowDefinition.Height>
+                                        <OnPlatform x:TypeArguments="GridLength">
+                                            <On Platform="Android">70</On>
+                                            <On Platform="iOS">70</On>
+                                        </OnPlatform>
+                                    </RowDefinition.Height>
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label 
+                            x:Name="txtName"
+                            Grid.Column="0" Grid.Row="0"
+                            Text="Description"
+                            Margin="10,0,0,0"
+                            HorizontalTextAlignment="Start"
+                            VerticalTextAlignment="Center"
+                            Style="{StaticResource LabelMedium}"/>
+
+                            <Label
+                            x:Name="txtName3"
+                            Grid.Column="1" Grid.Row="0"
+                            Text="Quantity"
+                            Margin="0,0,10,0"
+                            HorizontalTextAlignment="End"
+                            VerticalTextAlignment="Center"
+                            Style="{StaticResource LabelMedium}"/>
+                        </Grid>
+                    </CollectionView.Header>
+
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="5,20,5,20">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" 
+                                                      CommandParameter="{Binding .}"
+                                    Command="{Binding Source={x:Reference InventoryCurrentPageId}, Path=BindingContext.SelectedCommand}">
+                                    </TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                         <RowDefinition Height="40"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Grid.Column="0" Grid.Row="0" MaxLines="2"
+                                        Style="{StaticResource LabelMedium}" HorizontalTextAlignment="Start"
+                                        Text="{Binding Description,Mode=TwoWay}" VerticalTextAlignment="Center"/>
+
+                                    <Label Grid.Column="1" Grid.Row="0"
+                                        Style="{StaticResource LabelMedium}" HorizontalTextAlignment="Center"
+                                        Text="{Binding TotalQty,Mode=TwoWay}" VerticalTextAlignment="Center"/>
+
+
+                                </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

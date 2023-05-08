@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!-- IconImageSource="icon_about.png"
+IsBusy="{Binding IsBusy}" 
+       
+    -->
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontAwesome="clr-namespace:FontAwesome"        
+    x:Class="Jci.RetailSurveyTool.TechnicianApp.Views.NewAudit.IssueDetailPage"
+    xmlns:c="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Converters"
+    xmlns:behaviors="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Behaviors"
+    xmlns:utility="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Utility"
+    xmlns:local="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Controls"
+    utility:ViewModelLocator.AutoWireViewModel="True"
+    Style="{StaticResource BaseContentPageBug}"
+    NavigationPage.BackButtonTitle="Back"
+    x:Name="IssueDetailPageId"
+    Title="{Binding SelectedStoreArea.Name}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:ByteToImageFieldConverter x:Key="btifc"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!--- <ContentPage.ToolbarItems>
+       
+        <ToolbarItem  Text="Add Photo"  Command="{Binding TakePhotoCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource 
+                    FontFamily="FAS"
+                    Glyph="{x:Static fontAwesome:FontAwesomeIcons.Camera}"
+                    Size="Large"
+                    />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        
+    </ContentPage.ToolbarItems> -->
+
+    <ContentPage.Content>
+
+        <StackLayout Style="{StaticResource PagePadding}">
+
+            <Label Style="{StaticResource LabelMedium}"  Text="Issue Type"/>
+
+            <Frame Style="{StaticResource InputFieldStyle}" >
+                <local:BorderlessPicker SelectedItem="{Binding SelectedIssueType}" 
+                        ItemsSource="{Binding IssueTypes}" 
+                        ItemDisplayBinding="{Binding Name}"
+                         
+                         FontSize="Small"
+                        Image="picker_down_arrow.png">
+                    <Picker.Behaviors>
+                        <behaviors:EventToCommandBehavior 
+                            EventName="SelectedIndexChanged"
+                            Command="{Binding OnPickerSelectedIndexChangedIssueTypeCommand}"
+                            EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                        </behaviors:EventToCommandBehavior>
+                    </Picker.Behaviors>
+                </local:BorderlessPicker>
+            </Frame>
+
+
+            <Label Style="{StaticResource LabelMedium}" Text="Issue Category"/>
+            <Frame Style="{StaticResource InputFieldStyle}" >
+
+                <local:BorderlessPicker SelectedItem="{Binding SelectedIssueCategory}" 
+                        ItemsSource="{Binding IssueCategories}" 
+                        ItemDisplayBinding="{Binding Name}"
+                            
+                           FontSize="Small"
+                        Image="picker_down_arrow.png">
+                    
+                    <Picker.Behaviors>
+                        <behaviors:EventToCommandBehavior 
+                            EventName="SelectedIndexChanged"
+                            Command="{Binding OnPickerSelectedIndexChangedIssueCategoryCommand}"
+                            EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                        </behaviors:EventToCommandBehavior>
+                    </Picker.Behaviors>
+                </local:BorderlessPicker>
+            </Frame>
+
+            <Label Style="{StaticResource LabelMedium}" Text="Issue Details"/>
+            <Frame Style="{StaticResource InputFieldStyle}" >
+                <local:BorderlessEntry Text="{Binding SelectedIssue.IssueDescription}"
+                                       FontSize="Small"
+                                       Style="{StaticResource EntryStyle}"/>
+            </Frame>
+
+            <Frame Style="{StaticResource InputFieldStyle}" Padding="15,10,0,10" Margin="0,15,0,0">
+                <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" 
+                             HeightRequest="90">
+                    <Label Style="{StaticResource LabelMedium}"
+                           HorizontalOptions="StartAndExpand" 
+                           VerticalOptions="CenterAndExpand" Text="Repaired On Visit" />
+                    
+                    <local:CustomSwitchControl VerticalOptions="FillAndExpand" 
+                        IsEnable="{Binding SelectedIssue.Repaired}">
+                    </local:CustomSwitchControl>
+
+                </StackLayout>
+            </Frame>
+
+            <CollectionView ItemsSource="{Binding SelectedIssueImageList}"
+                ItemsLayout="HorizontalList"
+                 Margin="5,10,5,5"           
+                            >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="5" WidthRequest="120">
+                            <Frame BorderColor="LightGray"  
+                               CornerRadius="15" HasShadow="True" Padding="0">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="120" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="{Binding Image, 
+                                    Converter={StaticResource Key=btifc}}" Aspect="Fill" 
+                                    Grid.Row="0" Grid.Column="0" VerticalOptions="Start" 
+                                    Grid.ColumnSpan="2"  />
+
+                                    <Image HeightRequest="30" WidthRequest="30" VerticalOptions="Start"
+                                       HorizontalOptions="End" Margin="0,5,5,0"
+                                               Source="delete.png"  
+                                               Aspect="AspectFit" 
+                                       Grid.Row="0" Grid.Column="1" >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                                  Command="{Binding Source={x:Reference IssueDetailPageId}, Path=BindingContext.DeletePhotoCommand}"
+                                                                  CommandParameter="{Binding .}">
+
+                                            </TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
+                <Button Style="{StaticResource CustomButtonStyle}" 
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="{StaticResource Primary}"  
+                        Text="Save Issue" Command="{Binding SaveIssueCommand}"/>
+                <Button Style="{StaticResource CustomButtonStyle}" 
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="{StaticResource SystemRed}" 
+                        Text="Delete Issue" Command="{Binding DeleteCurrentIssueCommand}"/>
+            </StackLayout>
+
+        </StackLayout>
+
+
+    </ContentPage.Content>
+
+</ContentPage>

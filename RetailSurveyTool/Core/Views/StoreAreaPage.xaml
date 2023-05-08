@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fontAwesome="clr-namespace:FontAwesome"                    
+             x:Class="Jci.RetailSurveyTool.TechnicianApp.Views.StoreAreaPage"
+
+             Style="{StaticResource BaseContentPage}"             
+             >
+    <!--     
+                 xmlns:vm="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.ViewModels"
+    <ContentPage.BindingContext>
+        <vm:StoreAreaViewModel/>
+    </ContentPage.BindingContext>
+-->
+
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="Finish Audit" IconImageSource="icon_check.png" Command="{Binding FinishAuditCommand}"/>-->
+        <ToolbarItem Text="Finish Audit" Command="{Binding FinishAuditCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource 
+                    FontFamily="FAS"
+                    Glyph="{x:Static fontAwesome:FontAwesomeIcons.CheckCircle}"
+                    Size="Large"
+                    />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding StoreDisplayName, FallbackValue='Walmart 1234'}"/>
+            <ListView ItemsSource="{Binding StoreAreas}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding Icon.IconImage}"/>
+                            <Label Text="{Binding Name}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

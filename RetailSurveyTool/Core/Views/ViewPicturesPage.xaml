@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fontAwesome="clr-namespace:FontAwesome"  
+             xmlns:c="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Converters"
+             x:Class="Jci.RetailSurveyTool.TechnicianApp.Views.ViewPicturesPage"
+                          xmlns:utility="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Utility"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:ByteToImageFieldConverter x:Key="btifc"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!--     
+    xmlns:vm="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.ViewModels"
+    <ContentPage.BindingContext>
+        <viewmodels:ViewPicturesModel/>
+    </ContentPage.BindingContext>
+-->
+
+
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="Add" IconImageSource="icon_about.png" Command="{Binding TakePhotoAsync}"/>-->
+        <ToolbarItem Text="Add Photo" Command="{Binding TakePhotoAsync}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource 
+                    FontFamily="FAS"
+                    Glyph="{x:Static fontAwesome:FontAwesomeIcons.Camera}"
+                    Size="Large"
+                    />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <!--<CarouselView ItemsSource="{Binding IssueImages}">
+        <CarouselView.ItemTemplate>
+        <DataTemplate>
+        <Image Source="{Binding Image, Converter={StaticResource Key=btifc}}"/>
+        -->
+
+
+        <Image Source="{Binding SelectedIssueImage.Image, Converter={StaticResource Key=btifc}}"/>
+                
+            
+
+        <!--
+        </DataTemplate>
+        </CarouselView.ItemTemplate>
+        </CarouselView>
+        -->
+
+    </ContentPage.Content>
+
+</ContentPage>

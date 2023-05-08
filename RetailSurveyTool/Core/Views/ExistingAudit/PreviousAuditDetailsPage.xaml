@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Jci.RetailSurveyTool.TechnicianApp.Views.ExistingAudit.PreviousAuditDetailsPage"
+             xmlns:utility="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Utility"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             Style="{StaticResource BaseContentPage}"
+             Title="Audit Details"
+             
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="5">
+                
+                
+                <Label Padding="10" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource Primary}" Text="{Binding Audit.Status}" FontAttributes="Bold"/>
+
+
+                <Frame Style="{StaticResource AppCard}" 
+                                       CornerRadius="7"
+                                       BorderColor="{StaticResource Primary}">
+                    <Grid >
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label  Style="{StaticResource BaseLabel}"  Grid.Row="0" Grid.ColumnSpan="1"  Text="Audit ID " FontAttributes="Bold"/>
+                        <Label Style="{StaticResource BaseLabel}"  Grid.Row="0" Grid.Column="1"  Text="{Binding Audit.ID}"/>
+
+                        <Label Style="{StaticResource BaseLabel}"  Grid.Row="3" Grid.Column="0"  Text="Work Order " FontAttributes="Bold"/>
+                        <Label Style="{StaticResource BaseLabel}"  Grid.Row="3" Grid.Column="1"  Text="{Binding Audit.ServiceCallNumber}" />
+
+                        <Label Style="{StaticResource BaseLabel}"  Grid.Row="2" Grid.Column="0"  Text="Store Type" FontAttributes="Bold"/>
+                        <Label Style="{StaticResource BaseLabel}"  Grid.Row="2" Grid.Column="1"  Text="{Binding StoreType.Name}" />
+
+
+
+                        <Label Style="{StaticResource BaseLabel}"  Grid.Row="1" Grid.Column="0" Text="Completed " FontAttributes="Bold"/>
+                        <Label Style="{StaticResource BaseLabel}"  Grid.Row="1" Grid.Column="1"  Text="{Binding Audit.Completed}" />
+
+                        <Label Style="{StaticResource BaseLabel}"  Grid.Row="4" Grid.Column="0" Text="Store Number" FontAttributes="Bold"/>
+                        <Label Style="{StaticResource BaseLabel}"  Grid.Row="4" Grid.Column="1"  Text="{Binding Audit.StoreNumber}" />
+
+                    </Grid>
+                </Frame>
+            </StackLayout>
+
+
+
+            <StackLayout Padding="5">
+                <Frame Style="{StaticResource AppCard}" 
+                                       CornerRadius="7"
+                                       BorderColor="{StaticResource Primary}">
+                    <Grid>
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="*" />
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="0" Grid.Column="0">
+                            <Label  TextColor="{StaticResource Primary}"  Text="Issues" FontAttributes="Bold"></Label>
+                            <Label ></Label>
+                            <Label Style="{StaticResource BaseLabel}"  Text="{Binding IssuesNumber, StringFormat= '{0} issues logged'}"></Label>
+                            
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="0" Grid.Column="1">
+                            <Label   TextColor="{StaticResource Primary}"  Text="inventory" FontAttributes="Bold"></Label>
+                            <Label ></Label>
+                            <Label  Style="{StaticResource BaseLabel}"  Text="{Binding InventoriesNumber, StringFormat='Inventoried {0} devices'}"></Label>
+                        </StackLayout>
+
+
+                    </Grid>
+                </Frame>
+            </StackLayout>
+
+        </StackLayout>
+        
+        
+    </ContentPage.Content>
+</ContentPage>

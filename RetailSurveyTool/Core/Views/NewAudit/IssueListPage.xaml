@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontAwesome="clr-namespace:FontAwesome"
+    x:Class="Jci.RetailSurveyTool.TechnicianApp.Views.NewAudit.IssueListPage"
+    xmlns:db="clr-namespace:JCI.RetailSurveyTool.DataBase.Models;assembly=JCI.RetailSurveyTool.DataBase"
+    xmlns:c="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Converters"
+    xmlns:behaviors="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Behaviors"
+    xmlns:utility="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Utility"
+    utility:ViewModelLocator.AutoWireViewModel="True"
+    Title="Issues"
+    IconImageSource="icon_feed.png"
+    Style="{StaticResource BaseContentPageBug}" >
+
+    <ContentPage.Content>
+        <StackLayout Margin="{OnPlatform Android='0', iOS='0,80,0,0'}">
+            <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                     RefreshColor="Red"
+                     Command="{Binding LoadCommand}">
+
+
+                <ListView x:Name="MenuItemsListView" 
+                      Style="{StaticResource AppListView}"
+                      HasUnevenRows="True" SeparatorVisibility="Default"
+                      ItemsSource="{Binding Issues}"
+                      IsPullToRefreshEnabled="False"
+                      >
+
+                    <ListView.Behaviors>
+                        <behaviors:EventToCommandBehavior 
+                    EventName="ItemTapped" 
+                    Command="{Binding SelectedCommand}" 
+                    EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                        </behaviors:EventToCommandBehavior>
+                    </ListView.Behaviors>
+
+                    <ListView.Header>
+                        <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource WindowBackgroundColorDark}, Light={StaticResource WindowBackgroundColor}}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition>
+                                    <RowDefinition.Height>
+                                        <OnPlatform x:TypeArguments="GridLength">
+                                            <On Platform="Android">70</On>
+                                            <On Platform="iOS">130</On>
+                                        </OnPlatform>
+                                    </RowDefinition.Height>
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label
+                            x:Name="txtName"
+                            Grid.Column="0" Grid.Row="0"
+                            Text="Type"
+                            Margin="10,0,0,0"
+                            HorizontalTextAlignment="Start"
+                            VerticalTextAlignment="Center"
+                            Style="{StaticResource LabelMedium}"/>
+
+                            <Label  
+                                x:Name="txtName3"
+                                Grid.Column="1" 
+                                Grid.Row="0"    
+                            Text="Category"
+                            Margin="0,0,10,0"
+                            HorizontalTextAlignment="End"
+                            VerticalTextAlignment="Center"
+                            Style="{StaticResource LabelMedium}"/>
+                        </Grid>
+                    </ListView.Header>
+
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5,20,5,20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition>
+                                            <RowDefinition.Height>
+                                                <OnPlatform x:TypeArguments="GridLength">
+                                                    <On Platform="Android">*</On>
+                                                    <On Platform="iOS">64</On>
+                                                </OnPlatform>
+                                            </RowDefinition.Height>
+                                        </RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Grid.Column="0" Grid.Row="0"
+                                        Style="{StaticResource LabelMedium}" VerticalTextAlignment="Center" MaxLines="2"
+                                        Text="{Binding IssueTypeDescription}" HorizontalTextAlignment="Start"/>
+
+                                    <Label Grid.Column="1" Grid.Row="0" VerticalTextAlignment="Center"
+                                        Style="{StaticResource LabelMedium}" HorizontalTextAlignment="Center"
+                                        Text="{Binding IssueCategoryDescription}" MaxLines="2"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </RefreshView>
+        </StackLayout>
+
+
+
+    </ContentPage.Content>
+
+    <!--
+        <ListView SelectionMode="None" ItemTapped="ListView_ItemTapped" ItemsSource="{Binding Issues}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding IssueType.Name}"/>
+                            <Label Text="{Binding IssueCategory.Name}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        -->
+
+</ContentPage>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:fontAwesome="clr-namespace:FontAwesome"
+       xmlns:local="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Views"
+       Title="Jci.RetailSurveyTool.TechnicianApp"
+       x:Class="Jci.RetailSurveyTool.TechnicianApp.AppShell"
+       FlyoutBackgroundColor="{AppThemeBinding Dark={StaticResource DarkModeBoxColor}, Light={StaticResource WindowBackgroundColor}}"
+       >
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <!--  Top Nav -->
+                <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Dark={StaticResource DarkModeBoxColor}, Light={StaticResource WindowBackgroundColor}}" />
+                <!--  Menu Icon -->
+                <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Dark={StaticResource DarkModeTextColor}, Light={StaticResource TextWindowBackgroundColorBug}}" />
+                <!--  Top Nav Text -->
+                <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Dark={StaticResource DarkModeHeadingColor}, Light={StaticResource TextWindowBackgroundColorBug}}" />
+               
+                
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Dark={StaticResource DarkModeTextColor}, Light={StaticResource WindowBackgroundColorBug}}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+
+            <!--
+            Default Styles for all Flyout Items
+            https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#flyoutitem-and-menuitem-style-classes
+            -->
+            <Style Class="FlyoutItemLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextColorDark},Light={StaticResource TextColor}}"></Setter>
+            </Style>
+            <Style Class="FlyoutItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <!--  Top Nav Text -->
+                                    <Setter Property="BackgroundColor" Value="{x:OnPlatform UWP=Transparent, iOS=White}" />
+                                    <!--  Top Nav Text -->
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{AppThemeBinding Dark={StaticResource TextColorDarkBug},Light={StaticResource TextColorBug}}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource WindowBackgroundColorDarkBug2}, Light={StaticResource PrimaryBug2}}" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{AppThemeBinding Dark={StaticResource TextColor},Light={StaticResource TextColorBug}}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+    
+    
+
+    <Shell.FlyoutHeader>
+        <StackLayout Padding="0,15,0,15" BackgroundColor="{StaticResource Primary}">
+            <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Image WidthRequest="60" HeightRequest="60" >
+                    <Image.Source>
+                        <FontImageSource FontFamily="FAS"
+                             Color="{AppThemeBinding 
+                                    Dark={StaticResource Primary}, 
+                                    Light={StaticResource WindowBackgroundColorBug}}"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.User}"/>
+                    </Image.Source>
+                </Image>
+                <Label x:Name="userNameID" TextColor="White" FontSize="Large" />
+            </StackLayout>
+        </StackLayout>
+    </Shell.FlyoutHeader>
+    <FlyoutItem Title="Job List" >
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FAS"
+                             Color="{AppThemeBinding 
+                                    Dark={StaticResource Primary}, 
+                                    Light={StaticResource Primary}}"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Newspaper}"/>
+        </FlyoutItem.Icon>
+        <ShellContent ContentTemplate="{DataTemplate local:JobListPage}" Route="JobListPage" />
+    </FlyoutItem>
+
+
+    <FlyoutItem Title="Lookup Old Audits">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FAS"
+                             Color="{AppThemeBinding 
+                                    Dark={StaticResource Primary}, 
+                                    Light={StaticResource Primary}}"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Search}"/>
+        </FlyoutItem.Icon>
+        <ShellContent ContentTemplate="{DataTemplate local:LookupPreviousPage}" Route="SettingsPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Settings">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FAS"
+                             Color="{AppThemeBinding 
+                                    Dark={StaticResource Primary}, 
+                                    Light={StaticResource Primary}}"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Cog}"/>
+        </FlyoutItem.Icon>
+        <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}" Route="SettingsPage" />
+    </FlyoutItem>
+	<FlyoutItem Title="Force Sync" StyleClass="MenuItemLayoutStyle">
+		<FlyoutItem.Icon>
+            <FontImageSource FontFamily="FAS"
+                             Color="{AppThemeBinding 
+                                    Dark={StaticResource Primary}, 
+                                    Light={StaticResource Primary}}"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Sync}"/>
+        </FlyoutItem.Icon>
+		<ShellContent ContentTemplate="{DataTemplate local:ForceSyncPage}" Route="ForceSyncPage" />
+    </FlyoutItem>
+
+    <TabBar>
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+    </TabBar>
+
+    <Shell.FlyoutFooter>
+        <StackLayout>
+            <BoxView BackgroundColor="Gray" HeightRequest="1"></BoxView>
+            <StackLayout Padding="10,10,10,20">
+                <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                            <Span FontSize="Micro" TextColor="{AppThemeBinding 
+                                    Dark={StaticResource DarkModeDescriptionColorColor}, 
+                                    Light={StaticResource DarkModeTextColor}}"  Text="App Version: "></Span>
+                            <Span FontSize="Micro" TextColor="{AppThemeBinding 
+                                    Dark={StaticResource DarkModeDescriptionColorColor}, 
+                                    Light={StaticResource DarkModeTextColor}}"  x:Name="LbLAppVersion"></Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+                <Label FontSize="Micro">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span TextColor="{AppThemeBinding 
+                                    Dark={StaticResource DarkModeDescriptionColorColor}, 
+                                    Light={StaticResource DarkModeTextColor}}"  Text="Copyright © 2020-2022 Retail Survey App All rights reserved"></Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </Shell.FlyoutFooter>
+
+</Shell>

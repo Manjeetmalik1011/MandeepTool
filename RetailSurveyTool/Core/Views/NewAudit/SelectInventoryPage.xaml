@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Jci.RetailSurveyTool.TechnicianApp.ViewModels.NewAudit.SelectInventoryPage"
+             xmlns:utility="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Utility"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             Title="Select Inventory Type"
+             Style="{StaticResource BaseContentPage}"
+             >
+    <ContentPage.Content>
+        <StackLayout IsVisible="{Binding ShowPopup}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Button Style="{StaticResource CustomButtonStyle}" 
+                    Command="{Binding GoToPedestalInventory}" 
+                    HorizontalOptions="FillAndExpand"
+                    Text="Pedestal Inventory" Margin="0,15,0,0"/>
+            
+            <Button Style="{StaticResource CustomButtonStyle}" 
+                    Command="{Binding GoToDeactivateInventory}" 
+                    HorizontalOptions="FillAndExpand"
+                    Text="Deactivation Inventory" Margin="0,15,0,0"/>
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

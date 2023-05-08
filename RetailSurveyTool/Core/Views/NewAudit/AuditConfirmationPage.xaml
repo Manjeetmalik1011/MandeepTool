@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Jci.RetailSurveyTool.TechnicianApp.Views.NewAudit.AuditConfirmationPage"
+             xmlns:utility="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Utility"
+             xmlns:local="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Controls"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             
+             Title="Audit Confirmation"
+             Style="{StaticResource BaseContentPage}"
+             >
+    <ContentPage.Content>
+
+        
+            
+            
+        <StackLayout Padding="15" VerticalOptions="StartAndExpand">
+
+
+
+            <Label Padding="3" Style="{StaticResource LabelMedium}" Text="Audit Hours"/>
+
+                <Frame  Padding="3" Style="{StaticResource InputFieldStyle}">
+                    <TimePicker Style="{StaticResource TimePickerStyle}" FontSize="Small"  Time="{Binding SelectedAudit.AuditHours}"  BackgroundColor="Transparent"  Format="HH:mm"  />
+                
+                
+            </Frame>
+
+            <Label Padding="3" Style="{StaticResource LabelMedium}" Text="Work Description"/>
+            <Frame  Style="{StaticResource InputFieldStyle}">
+                    <Editor Style="{StaticResource EditorStyle}" Placeholder="Type here...." Text="{Binding SelectedAudit.AuditDescription}" FontSize="Small"  HeightRequest="100" />
+                
+            </Frame>
+
+
+
+                <Button Style="{StaticResource CustomButtonStyle}" 
+                    HorizontalOptions="Fill"
+                    Margin="0,20,0,0"
+                    BackgroundColor="{StaticResource Primary}" Text="Submit Audit" Command="{Binding AuditCompleteCommand}"/>
+
+        </StackLayout>
+
+        
+    </ContentPage.Content>
+    
+    
+</ContentPage>

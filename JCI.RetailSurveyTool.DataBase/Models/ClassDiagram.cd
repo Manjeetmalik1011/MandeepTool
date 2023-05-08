@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.AlarmTone" Collapsed="true">
+    <Position X="10.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAABAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AlarmTone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.Audit">
+    <Position X="6" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMoAAAEAAAAlAIAAAAAAIAAAAAAAAYAAAAAAAAAAAE=</HashCode>
+      <FileName>Models\Audit.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AuditType" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Issues" />
+      <Property Name="Inventories" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.AuditType" Collapsed="true">
+    <Position X="14" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAIAAgAAAAAAAAAQAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AuditType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.Command" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAYAAEAEAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.Customer" Collapsed="true">
+    <Position X="17.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAEAAAAAAAgAAAAAQAAAQAEAAAAAgAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.CustomerErpMapping" Collapsed="true">
+    <Position X="10.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAgAAAAAAAQAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CustomerErpMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.CustomerPreferredDeactivator" Collapsed="true">
+    <Position X="12.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\CustomerPreferredDeactivator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.CustomerPreferredSystem" Collapsed="true">
+    <Position X="14" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Models\CustomerPreferredSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.DeactivationInventory" Collapsed="true">
+    <Position X="8" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAYAAAIAIAIwAIAAAgAAgAgAgAAAIICABAQkAAAAIAA=</HashCode>
+      <FileName>Models\DeactivationInventory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.DeactivatorType" Collapsed="true">
+    <Position X="15.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Models\DeactivatorType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.Icon" Collapsed="true">
+    <Position X="17.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAgAQAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\Icon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.Inventory" Collapsed="true">
+    <Position X="7" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAIIEggAAACAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Inventory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.Issue" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIhAAAAAMIEAgIAACAgREAAAhAAAEAQAAAAAAACAAGA=</HashCode>
+      <FileName>Models\Issue.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Audit" />
+      <Property Name="IssueCategory" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.IssueArea" Collapsed="true">
+    <Position X="12.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IssueArea.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.IssueCategory">
+    <Position X="12.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEAAAAAAAAAgAAAAAAQAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IssueCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.IssueComment" Collapsed="true">
+    <Position X="15.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAABAAAgAAAACAAAAAAQAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IssueComment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.IssueImage" Collapsed="true">
+    <Position X="17.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAgAQAAAAAAAAAAAAQABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IssueImage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.IssueStatus" Collapsed="true">
+    <Position X="10.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IssueStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.IssueType" Collapsed="true">
+    <Position X="12.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAgAAAgAAAAAIAAAQAEAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IssueType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.PedestalInventory" Collapsed="true">
+    <Position X="5.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAEoAIABCCgEICAgIgAhAAMgAAAAIEAABAAAAEwAAA=</HashCode>
+      <FileName>Models\PedestalInventory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.ProactiveSalesLead" Collapsed="true">
+    <Position X="14" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAgAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ProactiveSalesLead.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.ProactiveSalesLeadStatus" Collapsed="true">
+    <Position X="15.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ProactiveSalesLeadStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.Role" Collapsed="true">
+    <Position X="17.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAggAAAAAAAAAQAAAAAAAgAgAAAAAAAAAA=</HashCode>
+      <FileName>Models\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.StoreArea" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMAAAAAAAgAkIgAAAAAAAQAgAAgAAIAAAACAAkAACA=</HashCode>
+      <FileName>Models\StoreArea.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.StoreType" Collapsed="true">
+    <Position X="12.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEABAAAAIAAgAAAAAAAAAQAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\StoreType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.SystemType" Collapsed="true">
+    <Position X="14" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAABAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\SystemType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JCI.RetailSurveyTool.DataBase.Models.UserRole" Collapsed="true">
+    <Position X="15.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAIAAAAAgAAAEAAAACAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\UserRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

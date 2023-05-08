@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontAwesome="clr-namespace:FontAwesome"
+    xmlns:l="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.ViewModels.NewAudit"
+    xmlns:c="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Converters"
+    x:Class="Jci.RetailSurveyTool.TechnicianApp.Views.ExistingAudit.AuditStoreAreaList" BindingContext="{StaticResource AuditViewModel}" Title="Store Areas">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:ByteToImageFieldConverter x:Key="btifc"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="Finish Audit" IconImageSource="icon_about.png" Command="{Binding FinishAuditCommand}"/>-->
+        <ToolbarItem Text="Finish Audit" Command="{Binding AddItemCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource 
+                    FontFamily="FAS"
+                    Glyph="{x:Static fontAwesome:FontAwesomeIcons.InfoCircle}"
+                    Size="Large"
+                    />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ListView ItemsSource="{Binding StoreAreas}" SelectedItem="{Binding SelectedStoreArea}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="{Binding Icon.IconImage, Converter={StaticResource Key=btifc}}"/>
+                                <Label VerticalOptions="Center" Text="{Binding Name}"/>
+                            </StackLayout>
+                                <Label Text="{Binding InventoryStatus}"/>
+                                <Label Text="{Binding IssueStatus}"/>
+                            <Label/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

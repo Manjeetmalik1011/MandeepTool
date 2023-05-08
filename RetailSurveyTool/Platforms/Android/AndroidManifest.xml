@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+	<!--<application android:allowBackup="true" android:icon="@mipmap/appicon"
+				 package="com.jci.retailsurveytool.technicianapp"
+				 android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true"></application>-->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:label="Jci.RetailSurveyTool.TechnicianApp.Android"
+				 android:allowBackup="true" android:icon="@mipmap/appicon"
+				 package="com.jci.retailsurveytool.technicianapp"
+				 android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true"
+				 android:theme="@style/MainTheme">
+		<activity android:name="microsoft.identity.client.BrowserTabActivity" android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="msal3bf71188-13e7-4563-b683-efd9ed4df3f4" android:host="auth" />
+			</intent-filter>
+		</activity>
+	</application>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<queries>
+		<intent>
+			<action android:name="android.media.action.IMAGE_CAPTURE" />
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.PICK" />
+			<data android:mimeType="vnd.android.cursor.dir/image" />
+		</intent>
+	</queries>
+</manifest>
