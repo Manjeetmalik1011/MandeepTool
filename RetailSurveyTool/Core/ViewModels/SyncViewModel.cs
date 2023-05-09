@@ -80,7 +80,8 @@ namespace Jci.RetailSurveyTool.TechnicianApp.ViewModels
             finally
             {
                 IsSyncing = false;
-                Application.Current.MainPage = new AppShell();
+                //Application.Current.MainPage = new AppShell();
+                Application.Current.MainPage = new NavigationPage(new AppShell());
             }
 
         }

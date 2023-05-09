@@ -21,5 +21,14 @@ namespace Jci.RetailSurveyTool.TechnicianApp.Views.NewAudit
             }
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                //Task.Delay(200);
+                Application.Current.MainPage = new NavigationPage(new AppShell());
+            });
+            return true;
+        }
     }
 }
