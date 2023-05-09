@@ -7,6 +7,7 @@
              xmlns:utility="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Utility"
              utility:ViewModelLocator.AutoWireViewModel="True"
              Title="My Scheduled Jobs"
+             NavigationPage.HasNavigationBar="False"
              Style="{StaticResource BaseContentPage}"
              >
    

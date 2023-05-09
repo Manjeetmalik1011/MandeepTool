@@ -4,6 +4,7 @@
              xmlns:fontAwesome="clr-namespace:FontAwesome"
              x:Class="Jci.RetailSurveyTool.TechnicianApp.Views.SettingsPage"
     Title="Settings"
+             NavigationPage.HasNavigationBar="False"
      Style="{StaticResource BaseContentPage}" >
     <ContentPage.Resources>
         <ResourceDictionary>

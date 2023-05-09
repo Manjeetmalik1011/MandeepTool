@@ -4,7 +4,7 @@
              x:Class="Jci.RetailSurveyTool.TechnicianApp.Views.ForceSyncPage"
              xmlns:utility="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Utility"
              utility:ViewModelLocator.AutoWireViewModel="True"
-            
+            NavigationPage.HasNavigationBar="False"
              Title="Syncing"
              Style="{StaticResource BaseContentPage}"
              >

@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Jci.RetailSurveyTool.TechnicianApp.Controls"
              utility:ViewModelLocator.AutoWireViewModel="True"
              Title="Audits"
+             NavigationPage.HasNavigationBar="False"
              Style="{StaticResource BaseContentPage}"
              >
 
