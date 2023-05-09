@@ -11,55 +11,58 @@
              >
    
     <ContentPage.Content>
-        <StackLayout>
-            <RefreshView IsRefreshing="{Binding IsBusy}"
+        <AbsoluteLayout>
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <RefreshView IsRefreshing="{Binding IsBusy}"
                      RefreshColor="Red"
                      Command="{Binding LoadCommand}">
-                <CollectionView
+                    <CollectionView
                       SelectionMode="Single" 
                       ItemsSource="{Binding WOs}" 
                       Style="{StaticResource AppListView}"
                       SelectedItem="{Binding WoSelectedItem, Mode=TwoWay}"
                       Margin="5,10,5,0">
 
-                    <CollectionView.EmptyView >
-                        <Label Style="{StaticResource BaseLabel}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">No items to display</Label>
-                    </CollectionView.EmptyView>
+                        <CollectionView.EmptyView >
+                            <Label Style="{StaticResource BaseLabel}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">No items to display</Label>
+                        </CollectionView.EmptyView>
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout Padding="5">
-                                <Frame Style="{StaticResource AppCard}" 
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="5">
+                                    <Frame Style="{StaticResource AppCard}" 
                                        CornerRadius="7"
                                        BorderColor="{StaticResource Primary}">
-                                    <StackLayout>
-                                        <StackLayout  Orientation="Horizontal">
-                                            <Label TextColor="{StaticResource Primary}" Text="WO# " FontAttributes="Bold"/>
-                                            <Label TextColor="{StaticResource Primary}" Text="{Binding WORK_ORDER}" FontAttributes="Bold"/>
+                                        <StackLayout>
+                                            <StackLayout  Orientation="Horizontal">
+                                                <Label TextColor="{StaticResource Primary}" Text="WO# " FontAttributes="Bold"/>
+                                                <Label TextColor="{StaticResource Primary}" Text="{Binding WORK_ORDER}" FontAttributes="Bold"/>
+                                            </StackLayout>
+                                            <StackLayout  Orientation="Horizontal">
+                                                <Label Style="{StaticResource BaseLabel}" Text="{Binding LOCATION_NAME}"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Style="{StaticResource BaseLabel}" Text="{Binding ADDRESS}"/>
+                                            </StackLayout>
+                                            <StackLayout  Orientation="Horizontal">
+                                                <Label Style="{StaticResource BaseLabel}"  Text="{Binding CITY}"/>
+                                                <Label Style="{StaticResource BaseLabel}"  Text="{Binding STATE}"/>
+                                                <Label Style="{StaticResource BaseLabel}"  Text="{Binding ZIP}"/>
+                                            </StackLayout>
                                         </StackLayout>
-                                        <StackLayout  Orientation="Horizontal">
-                                            <Label Style="{StaticResource BaseLabel}" Text="{Binding LOCATION_NAME}"/>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Style="{StaticResource BaseLabel}" Text="{Binding ADDRESS}"/>
-                                        </StackLayout>
-                                        <StackLayout  Orientation="Horizontal">
-                                            <Label Style="{StaticResource BaseLabel}"  Text="{Binding CITY}"/>
-                                            <Label Style="{StaticResource BaseLabel}"  Text="{Binding STATE}"/>
-                                            <Label Style="{StaticResource BaseLabel}"  Text="{Binding ZIP}"/>
-                                        </StackLayout>
-                                    </StackLayout>
-                                </Frame>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </RefreshView>
-            <Label Style="{StaticResource LabelLarge}"  IsVisible="{Binding NoAuditsFound}" Text="No Jobs Found, Add A New One By Tapping The Plus In The Corner" />
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+                <Label Style="{StaticResource LabelLarge}"  IsVisible="{Binding NoAuditsFound}" Text="No Jobs Found, Add A New One By Tapping The Plus In The Corner" />
+            </StackLayout>
             <ImageButton BackgroundColor="Transparent" 
+                         AbsoluteLayout.LayoutBounds=".95,.95,80,80" AbsoluteLayout.LayoutFlags="PositionProportional"
                          Source="icon_add.png" HeightRequest="50" WidthRequest="50"
                          Command="{Binding AddCommand}"/>
-        </StackLayout>
+        </AbsoluteLayout>
 
     </ContentPage.Content>
 </ContentPage>
